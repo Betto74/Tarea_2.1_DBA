@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vista", "TAREA 2.1\Vista.csproj", "{8C59456D-A9FA-4CFC-B8CA-6C890B23A243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelos", "Modelos\Modelos.csproj", "{6BA9F3FB-9BD9-4C5C-8861-6EB2C3668AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{4FE816FA-67A0-4282-81F4-7BCBC35C353A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C59456D-A9FA-4CFC-B8CA-6C890B23A243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C59456D-A9FA-4CFC-B8CA-6C890B23A243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C59456D-A9FA-4CFC-B8CA-6C890B23A243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C59456D-A9FA-4CFC-B8CA-6C890B23A243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BA9F3FB-9BD9-4C5C-8861-6EB2C3668AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA9F3FB-9BD9-4C5C-8861-6EB2C3668AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA9F3FB-9BD9-4C5C-8861-6EB2C3668AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA9F3FB-9BD9-4C5C-8861-6EB2C3668AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE816FA-67A0-4282-81F4-7BCBC35C353A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE816FA-67A0-4282-81F4-7BCBC35C353A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE816FA-67A0-4282-81F4-7BCBC35C353A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE816FA-67A0-4282-81F4-7BCBC35C353A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D935868-7B1B-48C4-9309-D579DCECBC35}
+	EndGlobalSection
+EndGlobal
