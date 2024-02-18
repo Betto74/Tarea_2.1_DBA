@@ -43,6 +43,11 @@ namespace PROYECTO_U3
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtUbicacion.Text))
+            {
+                MessageBox.Show("Ningun campo debe de se estar vacio");
+                return;
+            }
             Area ar = new Area()
             {
                 //ID = Convert.ToInt32(fila["ID"]),

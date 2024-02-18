@@ -170,9 +170,14 @@
       <Name>Modelos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fondo_oscuro_2.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fondo_oscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_oscuro_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

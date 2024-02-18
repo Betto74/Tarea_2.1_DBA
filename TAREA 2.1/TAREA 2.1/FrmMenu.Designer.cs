@@ -35,30 +35,41 @@
             // 
             // btnInventario
             // 
-            this.btnInventario.Location = new System.Drawing.Point(114, 186);
+            this.btnInventario.BackColor = System.Drawing.Color.Black;
+            this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventario.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventario.ForeColor = System.Drawing.Color.White;
+            this.btnInventario.Location = new System.Drawing.Point(-3, 199);
             this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(75, 23);
+            this.btnInventario.Size = new System.Drawing.Size(323, 63);
             this.btnInventario.TabIndex = 0;
             this.btnInventario.Text = "Inventario";
-            this.btnInventario.UseVisualStyleBackColor = true;
+            this.btnInventario.UseVisualStyleBackColor = false;
             this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
             // btnAreas
             // 
-            this.btnAreas.Location = new System.Drawing.Point(114, 285);
+            this.btnAreas.BackColor = System.Drawing.Color.Black;
+            this.btnAreas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAreas.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAreas.ForeColor = System.Drawing.Color.White;
+            this.btnAreas.Location = new System.Drawing.Point(-3, 304);
             this.btnAreas.Name = "btnAreas";
-            this.btnAreas.Size = new System.Drawing.Size(75, 23);
+            this.btnAreas.Size = new System.Drawing.Size(323, 64);
             this.btnAreas.TabIndex = 1;
             this.btnAreas.Text = "Areas";
-            this.btnAreas.UseVisualStyleBackColor = true;
+            this.btnAreas.UseVisualStyleBackColor = false;
             this.btnAreas.Click += new System.EventHandler(this.btnAreas_Click);
             // 
             // lblMenu
             // 
             this.lblMenu.AutoSize = true;
-            this.lblMenu.Location = new System.Drawing.Point(150, 82);
+            this.lblMenu.BackColor = System.Drawing.Color.Transparent;
+            this.lblMenu.Font = new System.Drawing.Font("Segoe UI Black", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenu.ForeColor = System.Drawing.Color.Cyan;
+            this.lblMenu.Location = new System.Drawing.Point(98, 96);
             this.lblMenu.Name = "lblMenu";
-            this.lblMenu.Size = new System.Drawing.Size(39, 13);
+            this.lblMenu.Size = new System.Drawing.Size(128, 47);
             this.lblMenu.TabIndex = 2;
             this.lblMenu.Text = "MENU";
             // 

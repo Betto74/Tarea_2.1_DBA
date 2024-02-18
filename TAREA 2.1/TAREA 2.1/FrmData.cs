@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Modelos;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -137,6 +138,12 @@ namespace PROYECTO_U3
                 dgvData.EditMode = DataGridViewEditMode.EditProgrammatically;
                 dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgvData.Columns["ID"].Visible = false;
+                foreach (DataGridViewColumn column in dgvData.Columns)
+                {
+                    // Establecer el modo de tamaño automático de la columna en Fill
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+
             }
         }
 

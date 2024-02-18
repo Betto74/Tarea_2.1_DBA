@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PROYECTO_U3
 {
@@ -26,7 +27,8 @@ namespace PROYECTO_U3
             InitializeComponent();
             fillData(inv);
 
-
+            cbxTipoAd.SelectedIndex = 0;
+            if (cbxArea.Items.Count > 0) cbxArea.SelectedIndex = 0;
             this.bandera = false;
             this.inventario = inv;
             this.data = data;
@@ -41,6 +43,9 @@ namespace PROYECTO_U3
             this.bandera = true;
             this.data = data;
 
+            cbxTipoAd.SelectedIndex = 0;
+            if( cbxArea.Items.Count > 0)cbxArea.SelectedIndex = 0;
+
             cbxArea.DataSource = new AreaDAO().getAllData();
             cbxArea.DisplayMember = "NOMBRE";
 
@@ -51,6 +56,20 @@ namespace PROYECTO_U3
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             
+            if(string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text) ||
+                string.IsNullOrEmpty(txtSerie.Text) || string.IsNullOrEmpty(txtColor.Text) ||
+                string.IsNullOrEmpty(txtObservaciones.Text))
+            {
+                MessageBox.Show("Ningun campo debe de se estar vacio");
+                return;
+            }
+
+            if( cbxArea.Items.Count <=0)
+            {
+                MessageBox.Show("No hay ningun area agregada, favor de volver con una existente");
+                return;
+            }
+
             Inventario inv = new Inventario() { 
                 NOMBRECORTO = txtNombre.Text,
                 DESCRIPCION = txtDescripcion.Text,
@@ -122,6 +141,26 @@ namespace PROYECTO_U3
         {
             data.Show();
             
+        }
+
+        private void txtSerie_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtColor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtObservaciones_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
