@@ -93,8 +93,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaDAO.cs" />
     <Compile Include="Conexion.cs" />
-    <Compile Include="EmployeeDAO.cs" />
+    <Compile Include="InventarioDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
