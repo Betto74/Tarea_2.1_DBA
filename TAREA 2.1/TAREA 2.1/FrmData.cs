@@ -22,7 +22,7 @@ namespace PROYECTO_U3
         public FrmData(Boolean bandera, FrmMenu menu)
         {
             InitializeComponent();
-            this.bandera = true;
+            this.bandera = bandera;
             this.menu = menu;
             Initialize(bandera);
             
@@ -101,7 +101,7 @@ namespace PROYECTO_U3
                     if (new AreaDAO().delete(areaList[index].ID))
                     {
                         MessageBox.Show("Se ha eliminado correctamente");
-                        Initialize(true);
+                        Initialize(false);
                     }
                     else
                     {
@@ -127,7 +127,7 @@ namespace PROYECTO_U3
                 dgvData.AllowUserToDeleteRows = false;
                 dgvData.EditMode = DataGridViewEditMode.EditProgrammatically;
                 dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                //dgvData.Columns["ID"].Visible = false;
+                dgvData.Columns["ID"].Visible = false;
             }
             else
             {
@@ -138,6 +138,17 @@ namespace PROYECTO_U3
                 dgvData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgvData.Columns["ID"].Visible = false;
             }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            menu.Show();
+            this.Close();
+        }
+
+        private void FrmData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            menu.Show();
         }
     }
 }

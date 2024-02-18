@@ -121,6 +121,7 @@
             this.Controls.Add(this.lblId);
             this.Name = "FrmArea";
             this.Text = "FrmArea";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmArea_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

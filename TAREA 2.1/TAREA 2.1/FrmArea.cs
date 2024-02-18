@@ -19,6 +19,7 @@ namespace PROYECTO_U3
 
         Area area;
         FrmData data;
+        //aditar
         public FrmArea(Area area, FrmData data)
         {
             InitializeComponent();
@@ -27,16 +28,17 @@ namespace PROYECTO_U3
             this.area = area;
             this.data = data;
             this.bandera = false;
+         
 
-            txtId.Visible = false;
-            lblId.Visible = false;
         }
-
+        //agregar
         public FrmArea(FrmData data)
         {
             InitializeComponent();
             this.data = data;
-            this.bandera = false;
+            this.bandera = true;
+            txtId.Visible = false;
+            lblId.Visible = false;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -44,8 +46,8 @@ namespace PROYECTO_U3
             Area ar = new Area()
             {
                 //ID = Convert.ToInt32(fila["ID"]),
-                NOMBRE = txtNombre.ToString(),
-                UBICACION = txtUbicacion.ToString(),
+                NOMBRE = txtNombre.Text,
+                UBICACION = txtUbicacion.Text,
 
 
             };
@@ -80,13 +82,13 @@ namespace PROYECTO_U3
             }
             data.Show();
             data.Initialize(false);
-            this.Hide();
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             data.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void fillData(Area area)
@@ -95,6 +97,12 @@ namespace PROYECTO_U3
             txtId.ReadOnly = true;
             txtNombre.Text = area.NOMBRE;
             txtUbicacion.Text = area.UBICACION;
+        }
+
+        private void FrmArea_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            data.Show();
+            this.Hide();
         }
     }
 }

@@ -102,6 +102,7 @@ namespace Datos
                             {
                                 ID = Convert.ToInt32(fila["ID"]),
                                 NOMBRECORTO = fila["NOMBRECORTO"].ToString(),
+                                DESCRIPCION = fila["DESCRIPCION"].ToString(),
                                 SERIE = fila["SERIE"].ToString(),
                                 COLOR = fila["COLOR"].ToString(),
                                 FECHAADQUISICION = fila["FECHAADQUISICION"].ToString(),
@@ -111,6 +112,7 @@ namespace Datos
 
 
                             };
+                            invList.Add(inv);
                         }
 
                     }
@@ -136,7 +138,7 @@ namespace Datos
                 try
                 {
 
-                    String select = @"INSERT INTO inventario(NOMBRECORTO, DESCRIPCION, SERIE, COLOR, FECHAADQUISICION, TIPOADQUISICION, OBSERVACION, AREAS_ID)" +
+                    String select = @"INSERT INTO inventario(NOMBRECORTO, DESCRIPCION, SERIE, COLOR, FECHAADQUISICION, TIPOADQUISICION, OBSERVACIONES, AREAS_ID)" +
                         " VALUES(@NOMBRECORTO, @DESCRIPCION, @SERIE, @COLOR, @FECHAADQUISICION, @TIPOADQUISICION, @OBSERVACIONES, @AREAS_ID);";
 
                     //Crear el dataadapter
@@ -148,7 +150,7 @@ namespace Datos
                     sentencia.Parameters.AddWithValue("@COLOR", inv.COLOR);
                     sentencia.Parameters.AddWithValue("@FECHAADQUISICION", inv.FECHAADQUISICION);
                     sentencia.Parameters.AddWithValue("@TIPOADQUISICION", inv.TIPOADQUISICION);
-                    sentencia.Parameters.AddWithValue("@OBSERVACION", inv.OBSERVACIONES);
+                    sentencia.Parameters.AddWithValue("@OBSERVACIONES", inv.OBSERVACIONES);
                     sentencia.Parameters.AddWithValue("@AREAS_ID", inv.AREAS_ID);
 
 
@@ -183,8 +185,8 @@ namespace Datos
                                             "COLOR = @COLOR," +
                                             "FECHAADQUISICION = @FECHAADQUISICION," +
                                             "TIPOADQUISICION = @TIPOADQUISICION," +
-                                            "OBSERVACION = @OBSERVACIONES," +
-                                            "AREAS_ID = @AREAS_ID" +
+                                            "OBSERVACIONES = @OBSERVACIONES," +
+                                            "AREAS_ID = @AREAS_ID " +
                                         "WHERE ID = @ID";
 
                     //Crear el dataadapter
@@ -197,7 +199,7 @@ namespace Datos
                     sentencia.Parameters.AddWithValue("@COLOR", inv.COLOR);
                     sentencia.Parameters.AddWithValue("@FECHAADQUISICION", inv.FECHAADQUISICION);
                     sentencia.Parameters.AddWithValue("@TIPOADQUISICION", inv.TIPOADQUISICION);
-                    sentencia.Parameters.AddWithValue("@OBSERVACION", inv.OBSERVACIONES);
+                    sentencia.Parameters.AddWithValue("@OBSERVACIONES", inv.OBSERVACIONES);
                     sentencia.Parameters.AddWithValue("@AREAS_ID", inv.AREAS_ID);
 
 

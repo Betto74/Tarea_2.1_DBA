@@ -192,6 +192,7 @@
             // 
             // cbxArea
             // 
+            this.cbxArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxArea.FormattingEnabled = true;
             this.cbxArea.Location = new System.Drawing.Point(125, 280);
             this.cbxArea.Name = "cbxArea";
@@ -253,6 +254,7 @@
             this.Controls.Add(this.lblID);
             this.Name = "FrmInventario";
             this.Text = "FrmInventario";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmInventario_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

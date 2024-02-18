@@ -31,8 +31,7 @@ namespace PROYECTO_U3
             this.inventario = inv;
             this.data = data;
 
-            txtId.Visible = false;
-            lblID.Visible = false;
+            
 
         }
         //add
@@ -41,19 +40,25 @@ namespace PROYECTO_U3
             InitializeComponent();
             this.bandera = true;
             this.data = data;
+
+            cbxArea.DataSource = new AreaDAO().getAllData();
+            cbxArea.DisplayMember = "NOMBRE";
+
+            txtId.Visible = false;
+            lblID.Visible = false;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             
             Inventario inv = new Inventario() { 
-                NOMBRECORTO = txtNombre.ToString(),
-                DESCRIPCION = txtDescripcion.ToString(),
-                SERIE = txtSerie.ToString(),
-                COLOR = txtColor.ToString(),
-                FECHAADQUISICION = dtpFecha.Text.ToString(),
+                NOMBRECORTO = txtNombre.Text,
+                DESCRIPCION = txtDescripcion.Text,
+                SERIE = txtSerie.Text,
+                COLOR = txtColor.Text,
+                FECHAADQUISICION = dtpFecha.Text,
                 TIPOADQUISICION = cbxTipoAd.SelectedItem.ToString(),
-                OBSERVACIONES = txtDescripcion.ToString(),
+                OBSERVACIONES = txtDescripcion.Text,
                 AREAS_ID = ((Area)cbxArea.SelectedItem).ID,
 
             };
@@ -93,7 +98,7 @@ namespace PROYECTO_U3
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             data.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void fillData(Inventario inv)
@@ -105,12 +110,18 @@ namespace PROYECTO_U3
             txtSerie.Text = inv.SERIE;
             txtColor.Text = inv.COLOR;
             dtpFecha.Text = inv.FECHAADQUISICION;
+            cbxTipoAd.SelectedIndex = cbxTipoAd.FindString(inv.TIPOADQUISICION);
+            cbxArea.DataSource = new AreaDAO().getAllData();
+            cbxArea.DisplayMember = "NOMBRE";
 
-
-            cbxArea.DataSource = inventario;
-            cbxArea.DisplayMember = "NOMRE";
 
             txtObservaciones.Text = inv.OBSERVACIONES;
+        }
+
+        private void FrmInventario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            data.Show();
+            
         }
     }
 }
