@@ -43,6 +43,7 @@ namespace Datos
                         {
                             ID = Convert.ToInt32(fila["ID"]),
                             NOMBRECORTO = fila["NOMBRECORTO"].ToString(),
+                            DESCRIPCION = fila["DESCRIPCION"].ToString(),
                             SERIE = fila["SERIE"].ToString(),
                             COLOR = fila["COLOR"].ToString(),
                             FECHAADQUISICION = fila["FECHAADQUISICION"].ToString(),
@@ -56,6 +57,7 @@ namespace Datos
                     }
 
                     return inv;
+
                 }
                 finally
                 {
@@ -67,9 +69,10 @@ namespace Datos
                 return null;
             }
         }
-        public Inventario getAllData()
+        public List<Inventario> getAllData()
         {
-            Inventario inv = null;
+            
+            List<Inventario> invList = new List<Inventario>();
             if (Conexion.Conectar())
             {
                 try
@@ -93,24 +96,27 @@ namespace Datos
                     //Revisar si hubo resultados
                     if (dt.Rows.Count > 0)
                     {
-                        DataRow fila = dt.Rows[0];
-                        inv = new Inventario()
+                        foreach (DataRow fila in dt.Rows)
                         {
-                            ID = Convert.ToInt32(fila["ID"]),
-                            NOMBRECORTO = fila["NOMBRECORTO"].ToString(),
-                            SERIE = fila["SERIE"].ToString(),
-                            COLOR = fila["COLOR"].ToString(),
-                            FECHAADQUISICION = fila["FECHAADQUISICION"].ToString(),
-                            TIPOADQUISICION = fila["TIPOADQUISICION"].ToString(),
-                            OBSERVACIONES = fila["OBSERVACIONES"].ToString(),
-                            AREAS_ID = Convert.ToInt32(fila["AREAS_ID"]),
+                            Inventario inv = new Inventario()
+                            {
+                                ID = Convert.ToInt32(fila["ID"]),
+                                NOMBRECORTO = fila["NOMBRECORTO"].ToString(),
+                                SERIE = fila["SERIE"].ToString(),
+                                COLOR = fila["COLOR"].ToString(),
+                                FECHAADQUISICION = fila["FECHAADQUISICION"].ToString(),
+                                TIPOADQUISICION = fila["TIPOADQUISICION"].ToString(),
+                                OBSERVACIONES = fila["OBSERVACIONES"].ToString(),
+                                AREAS_ID = Convert.ToInt32(fila["AREAS_ID"]),
 
 
-                        };
+                            };
+                        }
 
                     }
 
-                    return inv;
+                    return invList;
+                    
                 }
                 finally
                 {
@@ -122,28 +128,28 @@ namespace Datos
                 return null;
             }
         }
-        public Boolean insert(String NOMBRECORTO, String DESCRIPCION, String SERIE, String COLOR, String FECHAADQUISICION, String TIPOADQUISICION, String OBSERVACION, int AREAS_ID)
+        public Boolean insert(Inventario inv)
         {
-            Area emp = null;
+           
             if (Conexion.Conectar())
             {
                 try
                 {
 
                     String select = @"INSERT INTO inventario(NOMBRECORTO, DESCRIPCION, SERIE, COLOR, FECHAADQUISICION, TIPOADQUISICION, OBSERVACION, AREAS_ID)" +
-                        " VALUES(@NOMBRECORTO, @DESCRIPCION, @SERIE, @COLOR, @FECHAADQUISICION, @TIPOADQUISICION, @OBSERVACION, @AREAS_ID);";
+                        " VALUES(@NOMBRECORTO, @DESCRIPCION, @SERIE, @COLOR, @FECHAADQUISICION, @TIPOADQUISICION, @OBSERVACIONES, @AREAS_ID);";
 
                     //Crear el dataadapter
                     MySqlCommand sentencia = new MySqlCommand(select);
                     //Asignar los parámetros
-                    sentencia.Parameters.AddWithValue("@NOMBRECORTO", NOMBRECORTO);
-                    sentencia.Parameters.AddWithValue("@DESCRIPCION", DESCRIPCION);
-                    sentencia.Parameters.AddWithValue("@SERIE", SERIE);
-                    sentencia.Parameters.AddWithValue("@COLOR", COLOR);
-                    sentencia.Parameters.AddWithValue("@FECHAADQUISICION", FECHAADQUISICION);
-                    sentencia.Parameters.AddWithValue("@TIPOADQUISICION", TIPOADQUISICION);
-                    sentencia.Parameters.AddWithValue("@OBSERVACION", OBSERVACION);
-                    sentencia.Parameters.AddWithValue("@AREAS_ID", AREAS_ID);
+                    sentencia.Parameters.AddWithValue("@NOMBRECORTO", inv.NOMBRECORTO);
+                    sentencia.Parameters.AddWithValue("@DESCRIPCION", inv.DESCRIPCION);
+                    sentencia.Parameters.AddWithValue("@SERIE", inv.SERIE);
+                    sentencia.Parameters.AddWithValue("@COLOR", inv.COLOR);
+                    sentencia.Parameters.AddWithValue("@FECHAADQUISICION", inv.FECHAADQUISICION);
+                    sentencia.Parameters.AddWithValue("@TIPOADQUISICION", inv.TIPOADQUISICION);
+                    sentencia.Parameters.AddWithValue("@OBSERVACION", inv.OBSERVACIONES);
+                    sentencia.Parameters.AddWithValue("@AREAS_ID", inv.AREAS_ID);
 
 
                     sentencia.Connection = Conexion.conexion;
@@ -162,9 +168,9 @@ namespace Datos
             }
 
         }
-        public Boolean update(int ID, String NOMBRECORTO, String DESCRIPCION, String SERIE, String COLOR, String FECHAADQUISICION, String TIPOADQUISICION, String OBSERVACION, int AREAS_ID)
+        public Boolean update(Inventario inv)
         {
-            Area emp = null;
+           
             if (Conexion.Conectar())
             {
                 try
@@ -177,22 +183,22 @@ namespace Datos
                                             "COLOR = @COLOR," +
                                             "FECHAADQUISICION = @FECHAADQUISICION," +
                                             "TIPOADQUISICION = @TIPOADQUISICION," +
-                                            "OBSERVACION = @OBSERVACION," +
+                                            "OBSERVACION = @OBSERVACIONES," +
                                             "AREAS_ID = @AREAS_ID" +
                                         "WHERE ID = @ID";
 
                     //Crear el dataadapter
                     MySqlCommand sentencia = new MySqlCommand(select);
                     //Asignar los parámetros
-                    sentencia.Parameters.AddWithValue("@ID", ID);
-                    sentencia.Parameters.AddWithValue("@NOMBRECORTO", NOMBRECORTO);
-                    sentencia.Parameters.AddWithValue("@DESCRIPCION", DESCRIPCION);
-                    sentencia.Parameters.AddWithValue("@SERIE", SERIE);
-                    sentencia.Parameters.AddWithValue("@COLOR", COLOR);
-                    sentencia.Parameters.AddWithValue("@FECHAADQUISICION", FECHAADQUISICION);
-                    sentencia.Parameters.AddWithValue("@TIPOADQUISICION", TIPOADQUISICION);
-                    sentencia.Parameters.AddWithValue("@OBSERVACION", OBSERVACION);
-                    sentencia.Parameters.AddWithValue("@AREAS_ID", AREAS_ID);
+                    sentencia.Parameters.AddWithValue("@ID", inv.ID);
+                    sentencia.Parameters.AddWithValue("@NOMBRECORTO", inv.NOMBRECORTO);
+                    sentencia.Parameters.AddWithValue("@DESCRIPCION", inv.DESCRIPCION);
+                    sentencia.Parameters.AddWithValue("@SERIE", inv.SERIE);
+                    sentencia.Parameters.AddWithValue("@COLOR", inv.COLOR);
+                    sentencia.Parameters.AddWithValue("@FECHAADQUISICION", inv.FECHAADQUISICION);
+                    sentencia.Parameters.AddWithValue("@TIPOADQUISICION", inv.TIPOADQUISICION);
+                    sentencia.Parameters.AddWithValue("@OBSERVACION", inv.OBSERVACIONES);
+                    sentencia.Parameters.AddWithValue("@AREAS_ID", inv.AREAS_ID);
 
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datos;
+using Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,21 @@ namespace PROYECTO_U3
         public FrmMenu()
         {
             InitializeComponent();
+        }
+
+        private void btnInventario_Click(object sender, EventArgs e)
+        {
+           // FrmData
+            FrmData data = new FrmData(true,this);
+            data.Show();
+            this.Hide();
+        }
+
+        private void btnAreas_Click(object sender, EventArgs e)
+        {
+            FrmData data = new FrmData(false, this);
+            data.Show();
+            this.Hide();
         }
     }
 }

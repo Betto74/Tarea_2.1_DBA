@@ -62,9 +62,10 @@ namespace Datos
                 return null;
             }
         }
-        public Area getAllData()
+        public List<Area> getAllData()
         {
-            Area area = null;
+
+            List<Area> areaList = new List<Area>();
             if (Conexion.Conectar())
             {
                 try
@@ -88,19 +89,25 @@ namespace Datos
                     //Revisar si hubo resultados
                     if (dt.Rows.Count > 0)
                     {
-                        DataRow fila = dt.Rows[0];
-                        area = new Area()
+
+                        foreach (DataRow fila in dt.Rows)
                         {
-                            ID = Convert.ToInt32(fila["ID"]),
-                            NOMBRE = fila["NOMBRE"].ToString(),
-                            UBICACION = fila["UBICACION"].ToString(),
+                            Area area = new Area()
+                            {
+                                ID = Convert.ToInt32(fila["ID"]),
+                                NOMBRE = fila["NOMBRE"].ToString(),
+                                UBICACION = fila["UBICACION"].ToString(),
 
 
-                        };
+                            };
+                            areaList.Add(area);
+                        }
+
 
                     }
+                    
 
-                    return area;
+                    return areaList;
                 }
                 finally
                 {
@@ -112,9 +119,9 @@ namespace Datos
                 return null;
             }
         }
-        public Boolean insert(String NOMBRE, String UBICACION)
+        public Boolean insert(Area area)
         {
-            Area emp = null;
+            
             if (Conexion.Conectar())
             {
                 try
@@ -125,8 +132,8 @@ namespace Datos
                     //Crear el dataadapter
                     MySqlCommand sentencia = new MySqlCommand(select);
                     //Asignar los parámetros
-                    sentencia.Parameters.AddWithValue("@NAME", NOMBRE);
-                    sentencia.Parameters.AddWithValue("@UBICATION", UBICACION);
+                    sentencia.Parameters.AddWithValue("@NAME", area.NOMBRE);
+                    sentencia.Parameters.AddWithValue("@UBICATION", area.UBICACION);
 
                     sentencia.Connection = Conexion.conexion;
 
@@ -144,9 +151,9 @@ namespace Datos
             }
 
         }
-        public Boolean update(String NOMBRE, String UBICACION, int ID)
+        public Boolean update(Area area)
         {
-            Area emp = null;
+          
             if (Conexion.Conectar())
             {
                 try
@@ -157,9 +164,9 @@ namespace Datos
                     //Crear el dataadapter
                     MySqlCommand sentencia = new MySqlCommand(select);
                     //Asignar los parámetros
-                    sentencia.Parameters.AddWithValue("@NAME", NOMBRE);
-                    sentencia.Parameters.AddWithValue("@UBICATION", UBICACION);
-                    sentencia.Parameters.AddWithValue("@ID", ID);
+                    sentencia.Parameters.AddWithValue("@NAME", area.NOMBRE);
+                    sentencia.Parameters.AddWithValue("@UBICATION", area.UBICACION);
+                    sentencia.Parameters.AddWithValue("@ID", area.ID);
 
 
 
