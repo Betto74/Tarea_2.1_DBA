@@ -178,7 +178,7 @@ namespace Datos
                 try
                 {
 
-                    String select = @"UPDATE inventario
+                    String select = @"UPDATE INVENTARIO
                                         SET NOMBRECORTO = @NOMBRECORTO," +
                                             "DESCRIPCION = @DESCRIPCION," +
                                             "SERIE = @SERIE," +
