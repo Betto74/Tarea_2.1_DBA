@@ -20,7 +20,7 @@ namespace Datos
                 if (conexion != null && conexion.State == System.Data.ConnectionState.Open) return true;
 
                 conexion = new MySqlConnection();
-                conexion.ConnectionString = "server=localhost;uid=root;pwd=root;database=bodega";
+                conexion.ConnectionString = "server=20.42.103.4;uid=AdminAJ;pwd=Mysql4S6A123;database=bodega";
                 conexion.Open();
 
                 return true;

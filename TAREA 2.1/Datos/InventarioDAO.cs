@@ -138,7 +138,7 @@ namespace Datos
                 try
                 {
 
-                    String select = @"INSERT INTO inventario(NOMBRECORTO, DESCRIPCION, SERIE, COLOR, FECHAADQUISICION, TIPOADQUISICION, OBSERVACIONES, AREAS_ID)" +
+                    String select = @"INSERT INTO INVENTARIO(NOMBRECORTO, DESCRIPCION, SERIE, COLOR, FECHAADQUISICION, TIPOADQUISICION, OBSERVACIONES, AREAS_ID)" +
                         " VALUES(@NOMBRECORTO, @DESCRIPCION, @SERIE, @COLOR, @FECHAADQUISICION, @TIPOADQUISICION, @OBSERVACIONES, @AREAS_ID);";
 
                     //Crear el dataadapter

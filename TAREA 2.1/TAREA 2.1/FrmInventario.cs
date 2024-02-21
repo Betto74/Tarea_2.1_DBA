@@ -77,7 +77,7 @@ namespace PROYECTO_U3
                 COLOR = txtColor.Text,
                 FECHAADQUISICION = dtpFecha.Text,
                 TIPOADQUISICION = cbxTipoAd.SelectedItem.ToString(),
-                OBSERVACIONES = txtDescripcion.Text,
+                OBSERVACIONES = txtObservaciones.Text,
                 AREAS_ID = ((Area)cbxArea.SelectedItem).ID,
 
             };
